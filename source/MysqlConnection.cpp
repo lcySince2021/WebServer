@@ -9,7 +9,6 @@ MysqlConnection::MysqlConnection(std::string host, std::string user, std::string
     user_ = user;
     passwd_ = passwd;
     database_ = database;
-    printf("ready to connect\n");
 }
 
 MysqlConnection::~MysqlConnection() {
@@ -18,7 +17,8 @@ MysqlConnection::~MysqlConnection() {
 
 
 void MysqlConnection::Connect() {
-    if (!mysql_real_connect(&mysql_, host_.c_str(), user_.c_str(), passwd_.c_str(), database_.c_str(), 0, NULL, 0)) {
+    if (!mysql_real_connect(&mysql_, host_.c_str(), user_.c_str(), passwd_.c_str(), database_.c_str(), 3306, NULL, 0)) {
+        std::cout << mysql_error(&mysql_) << std::endl;
         printf("mysql connect failed\n");
     } else {
         success_ = true;

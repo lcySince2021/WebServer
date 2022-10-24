@@ -2,6 +2,7 @@
 #define _MYSQL_CONNECTION_H_
 #include "mysql/mysql.h"
 #include <string>
+#include <iostream>
 
 class MysqlConnection {
 public:

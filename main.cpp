@@ -1,15 +1,15 @@
 #include "source/MysqlConnection.h"
-
+#include <iostream>
 
 int main() {
-    MYSQL mysql;
-    mysql_init(&mysql);
-    mysql_real_connect(&mysql, "host", "root",  "123456", "lcy", 0, NULL, 0);
-    // MysqlConnection conn("host", "root", "123456", "lcy");
-    // conn.Connect();
-    // if (!conn.IsValid()) {
-    //     printf("failed\n");
-    // }
+
+    MysqlConnection conn("127.0.0.1", "root", "123456", "lcy");
+    conn.Connect();
+    if (!conn.IsValid()) {
+        printf("failed\n");
+    } else {
+        printf("Connect success!\n");
+    }
     
 
     return 0;
