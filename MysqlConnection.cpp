@@ -9,11 +9,7 @@ MysqlConnection::MysqlConnection(std::string host, std::string user, std::string
     m_user = user;
     m_passwd = passwd;
     m_database = database;
-    if (!m_mysql) {
-        // Connect();
-    } else {
-        printf("mysql is null\n");
-    }
+    Connect();
 }
 
 MysqlConnection::~MysqlConnection() {
