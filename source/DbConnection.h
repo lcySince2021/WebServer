@@ -20,10 +20,10 @@ private:
 
 public:
     std::string m_host; // host
-    int m_port; // 
-    std::string m_pwd;
-    std::string m_usernmae;
-    std::string database;
+    int m_port; // port
+    std::string m_pwd; // password
+    std::string m_usernmae; // username
+    std::string database; // database
 };
 
 
