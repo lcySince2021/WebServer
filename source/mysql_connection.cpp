@@ -21,9 +21,9 @@ bool MysqlConnection::Init() {
         std::cout << mysql_error(&mysql_) << std::endl;
         printf("mysql connect failed\n");
         return false;
-    } else {
-        return true;
-    }
+    } 
+    is_inited_ = true;
+    return true;
 }
 
 bool MysqlConnection::Init(std::string host, int port, std::string user, std::string passwd, std::string database) {
@@ -41,9 +41,9 @@ bool MysqlConnection::Init(std::string host, int port, std::string user, std::st
         std::cout << mysql_error(&mysql_) << std::endl;
         printf("mysql connect failed\n");
         return false;
-    } else {
-        return true;
-    }
+    } 
+    is_inited_ = true;
+    return true;
 }
 
 bool MysqlConnection::ReConnect() {
@@ -51,10 +51,48 @@ bool MysqlConnection::ReConnect() {
         std::cout << mysql_error(&mysql_) << std::endl;
         printf("mysql connect failed\n");
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
+bool MysqlConnection::Update(const std::string& sql) {
+    if (!is_inited_) {
+        printf("not init\n");
+        return false;
+    }
+    if (mysql_query(&mysql_, sql.c_str())) {
+        std::cout << mysql_error(&mysql_) << ", sql:" << sql << std::endl;
+        return false;
+    }
+    return true;
+}
 
+bool MysqlConnection::Query(const std::string& sql) {
+    if (!is_inited_) {
+        printf("not init\n");
+        return false;
+    }
+    if (mysql_query(&mysql_, sql.c_str())) {
+        std::cout << mysql_error(&mysql_) << ", sql:" << sql << std::endl;
+        return false;
+    }
+    result_ = mysql_store_result(&mysql_);
+    if (!result_) {
+        std::cout << mysql_error(&mysql_) << ", sql:" << sql << std::endl;
+    }
+    int num;
+	num = mysql_num_fields(result_);  //返回字段个数
+	for( int i = 0; i < num; i++ ) {
+		field_ = mysql_fetch_field_direct(result_, i );  //返回字段类型
+		std::cout << field_->name << "\t\t";  //输出字段名
+        std::cout << std::endl;
+	}
+    while(row_ = mysql_fetch_row(result_), row_) {
+		for( int i = 0; i < num; i++ ) {
+			std::cout << row_[i] << "\t\t";
+		}
+		std::cout << std::endl;
+	}
+    return true;
+}
 

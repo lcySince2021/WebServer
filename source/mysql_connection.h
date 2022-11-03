@@ -22,11 +22,20 @@ public:
     bool Init();
     bool Init(std::string host, int port, std::string user, std::string passwd, std::string database);
     bool ReConnect();
+
+    // insert delete update drop
+    bool Update(const std::string& sql);
+
+    // query
+    bool Query(const std::string& sql);
+
+    bool IsValid() { return is_inited_; }
 private:
     MYSQL mysql_;
     MYSQL_ROW row_;
-    MYSQL_FIELD field_;
-    MYSQL_RES result_;
+    MYSQL_FIELD* field_;
+    MYSQL_RES* result_;
+    bool is_inited_ = false;
 };
 
 
