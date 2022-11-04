@@ -5,6 +5,7 @@
 #include <pthread.h>
 #include <vector>
 #include <queue>
+#include <iostream>
 
 template<class T>
 class ThreadPool {
