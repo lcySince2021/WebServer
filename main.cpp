@@ -10,7 +10,12 @@ using namespace std;
 
 
 int main() {
-    
+    ThreadPool pool(4);
+    auto result = pool.enqueue([](int num) { 
+            printf("thread id: %llu\n", std::this_thread::get_id());
+            return num; 
+            }, 4);
+    std::cout << result.get() << std::endl;
     return 0;
     
 }
