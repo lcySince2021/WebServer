@@ -1,0 +1,70 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+-WebServer	README.md	/^# WebServer$/;"	h
+CXX	Makefile	/^CXX ?= gcc$/;"	m
+DEBUG	Makefile	/^DEBUG ?= 1$/;"	m
+GetInstance	source/mysql_connection.h	/^    static MysqlConnection& GetInstance() {$/;"	f	class:MysqlConnection	access:public	signature:()
+Init	source/mysql_connection.cpp	/^bool MysqlConnection::Init() {$/;"	f	class:MysqlConnection	signature:()
+Init	source/mysql_connection.cpp	/^bool MysqlConnection::Init(std::string host, int port, std::string user, std::string passwd, std::string database) {$/;"	f	class:MysqlConnection	signature:(std::string host, int port, std::string user, std::string passwd, std::string database)
+IsValid	source/mysql_connection.h	/^    bool IsValid() { return is_inited_; }$/;"	f	class:MysqlConnection	access:public	signature:()
+MysqlConnection	source/mysql_connection.cpp	/^MysqlConnection::MysqlConnection() {$/;"	f	class:MysqlConnection	signature:()
+MysqlConnection	source/mysql_connection.h	/^class MysqlConnection {$/;"	c
+MysqlConnection::GetInstance	source/mysql_connection.h	/^    static MysqlConnection& GetInstance() {$/;"	f	class:MysqlConnection	access:public	signature:()
+MysqlConnection::Init	source/mysql_connection.cpp	/^bool MysqlConnection::Init() {$/;"	f	class:MysqlConnection	signature:()
+MysqlConnection::Init	source/mysql_connection.cpp	/^bool MysqlConnection::Init(std::string host, int port, std::string user, std::string passwd, std::string database) {$/;"	f	class:MysqlConnection	signature:(std::string host, int port, std::string user, std::string passwd, std::string database)
+MysqlConnection::IsValid	source/mysql_connection.h	/^    bool IsValid() { return is_inited_; }$/;"	f	class:MysqlConnection	access:public	signature:()
+MysqlConnection::MysqlConnection	source/mysql_connection.cpp	/^MysqlConnection::MysqlConnection() {$/;"	f	class:MysqlConnection	signature:()
+MysqlConnection::Query	source/mysql_connection.cpp	/^bool MysqlConnection::Query(const std::string& sql) {$/;"	f	class:MysqlConnection	signature:(const std::string& sql)
+MysqlConnection::ReConnect	source/mysql_connection.cpp	/^bool MysqlConnection::ReConnect() {$/;"	f	class:MysqlConnection	signature:()
+MysqlConnection::Update	source/mysql_connection.cpp	/^bool MysqlConnection::Update(const std::string& sql) {$/;"	f	class:MysqlConnection	signature:(const std::string& sql)
+MysqlConnection::database_	source/mysql_connection.h	/^    std::string database_ = "";$/;"	m	class:MysqlConnection	access:public
+MysqlConnection::field_	source/mysql_connection.h	/^    MYSQL_FIELD* field_;$/;"	m	class:MysqlConnection	access:private
+MysqlConnection::host_	source/mysql_connection.h	/^    std::string host_ = "";$/;"	m	class:MysqlConnection	access:public
+MysqlConnection::is_inited_	source/mysql_connection.h	/^    bool is_inited_ = false;$/;"	m	class:MysqlConnection	access:private
+MysqlConnection::mysql_	source/mysql_connection.h	/^    MYSQL mysql_;$/;"	m	class:MysqlConnection	access:private
+MysqlConnection::passwd_	source/mysql_connection.h	/^    std::string passwd_ = "";$/;"	m	class:MysqlConnection	access:public
+MysqlConnection::port_	source/mysql_connection.h	/^    int port_;$/;"	m	class:MysqlConnection	access:public
+MysqlConnection::result_	source/mysql_connection.h	/^    MYSQL_RES* result_;$/;"	m	class:MysqlConnection	access:private
+MysqlConnection::row_	source/mysql_connection.h	/^    MYSQL_ROW row_;$/;"	m	class:MysqlConnection	access:private
+MysqlConnection::user_	source/mysql_connection.h	/^    std::string user_ = "";$/;"	m	class:MysqlConnection	access:public
+MysqlConnection::~MysqlConnection	source/mysql_connection.cpp	/^MysqlConnection::~MysqlConnection() {$/;"	f	class:MysqlConnection	signature:()
+Query	source/mysql_connection.cpp	/^bool MysqlConnection::Query(const std::string& sql) {$/;"	f	class:MysqlConnection	signature:(const std::string& sql)
+ReConnect	source/mysql_connection.cpp	/^bool MysqlConnection::ReConnect() {$/;"	f	class:MysqlConnection	signature:()
+ThreadPool	source/thread_pool.h	/^class ThreadPool {$/;"	c
+ThreadPool	source/thread_pool.h	/^inline ThreadPool::ThreadPool(size_t threads)$/;"	f	class:ThreadPool	signature:(size_t threads)
+ThreadPool::ThreadPool	source/thread_pool.h	/^inline ThreadPool::ThreadPool(size_t threads)$/;"	f	class:ThreadPool	signature:(size_t threads)
+ThreadPool::condition	source/thread_pool.h	/^    std::condition_variable condition;$/;"	m	class:ThreadPool	access:private
+ThreadPool::queue_mutex	source/thread_pool.h	/^    std::mutex queue_mutex;$/;"	m	class:ThreadPool	access:private
+ThreadPool::std::future	source/thread_pool.h	/^        -> std::future<typename std::result_of<F(Args...)>::type>;$/;"	m	class:ThreadPool::std	access:public
+ThreadPool::stop	source/thread_pool.h	/^    bool stop;$/;"	m	class:ThreadPool	access:private
+ThreadPool::tasks	source/thread_pool.h	/^    std::queue< std::function<void()> > tasks;$/;"	m	class:ThreadPool	access:private
+ThreadPool::workers	source/thread_pool.h	/^    std::vector< std::thread > workers;$/;"	m	class:ThreadPool	access:private
+ThreadPool::~ThreadPool	source/thread_pool.h	/^inline ThreadPool::~ThreadPool()$/;"	f	class:ThreadPool	signature:()
+Update	source/mysql_connection.cpp	/^bool MysqlConnection::Update(const std::string& sql) {$/;"	f	class:MysqlConnection	signature:(const std::string& sql)
+_HTTP_H_	source/http.h	2;"	d
+_MYSQL_CONNECTION_H_	source/mysql_connection.h	2;"	d
+_THREAD_POOL_H_	source/thread_pool.h	2;"	d
+condition	source/thread_pool.h	/^    std::condition_variable condition;$/;"	m	class:ThreadPool	access:private
+database_	source/mysql_connection.h	/^    std::string database_ = "";$/;"	m	class:MysqlConnection	access:public
+field_	source/mysql_connection.h	/^    MYSQL_FIELD* field_;$/;"	m	class:MysqlConnection	access:private
+future	source/thread_pool.h	/^        -> std::future<typename std::result_of<F(Args...)>::type>;$/;"	m	class:ThreadPool::std	access:public
+host_	source/mysql_connection.h	/^    std::string host_ = "";$/;"	m	class:MysqlConnection	access:public
+is_inited_	source/mysql_connection.h	/^    bool is_inited_ = false;$/;"	m	class:MysqlConnection	access:private
+main	main.cpp	/^int main() {$/;"	f	signature:()
+main	test.py	/^def main():$/;"	f	access:public
+mysql_	source/mysql_connection.h	/^    MYSQL mysql_;$/;"	m	class:MysqlConnection	access:private
+passwd_	source/mysql_connection.h	/^    std::string passwd_ = "";$/;"	m	class:MysqlConnection	access:public
+port_	source/mysql_connection.h	/^    int port_;$/;"	m	class:MysqlConnection	access:public
+queue_mutex	source/thread_pool.h	/^    std::mutex queue_mutex;$/;"	m	class:ThreadPool	access:private
+result_	source/mysql_connection.h	/^    MYSQL_RES* result_;$/;"	m	class:MysqlConnection	access:private
+row_	source/mysql_connection.h	/^    MYSQL_ROW row_;$/;"	m	class:MysqlConnection	access:private
+stop	source/thread_pool.h	/^    bool stop;$/;"	m	class:ThreadPool	access:private
+tasks	source/thread_pool.h	/^    std::queue< std::function<void()> > tasks;$/;"	m	class:ThreadPool	access:private
+user_	source/mysql_connection.h	/^    std::string user_ = "";$/;"	m	class:MysqlConnection	access:public
+workers	source/thread_pool.h	/^    std::vector< std::thread > workers;$/;"	m	class:ThreadPool	access:private
+~MysqlConnection	source/mysql_connection.cpp	/^MysqlConnection::~MysqlConnection() {$/;"	f	class:MysqlConnection	signature:()
+~ThreadPool	source/thread_pool.h	/^inline ThreadPool::~ThreadPool()$/;"	f	class:ThreadPool	signature:()
