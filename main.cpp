@@ -12,9 +12,10 @@ using namespace std;
 
 
 int main() {
-    DbConnectionPool::GetInstance().SetPararmeter(8, "127.0.0.1", 3306, "root", "123456", "lcy");
     auto db_pool = DbConnectionPool::GetInstance();
-    printf("max connect count: %d\n", db_pool.GetConnectCount());
+    db_pool->SetPararmeter(8, "127.0.0.1", 3306, "root", "123456", "lcy");
+    db_pool->Init();
+    printf("max connect count: %d\n", db_pool->GetMaxConnectCount());
     // ThreadPool pool(4);
     // std::vector<std::future<int>> results;
     // int num = 15;
