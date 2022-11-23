@@ -1,5 +1,3 @@
-#include "source/mysql_connection.h"
-//#include "source/http.h"
 #include "source/thread_pool.h"
 #include "source/db_connection_pool.h"
 #include "pthread.h"
@@ -16,6 +14,11 @@ int main() {
     db_pool->SetPararmeter(8, "127.0.0.1", 3306, "root", "123456", "lcy");
     db_pool->Init();
     printf("max connect count: %d\n", db_pool->GetMaxConnectCount());
+    std::string sql = "insert into 'test' values(5, 'test');";
+    
+    std::string sql1 = "delete from test where id = 5;";
+    bool ret = db_pool->Update(sql);
+    ret = db_pool->Update(sql1);
     // ThreadPool pool(4);
     // std::vector<std::future<int>> results;
     // int num = 15;

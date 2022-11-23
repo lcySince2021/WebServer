@@ -2,12 +2,14 @@
 
 
 MysqlConnection::MysqlConnection() {
-    printf("create\n");
+    printf("create mysql connection\n");
 }
 
 MysqlConnection::~MysqlConnection() {
     mysql_close(&mysql_);   
-    printf("delete\n");
+    delete field_;
+    delete result_;
+    printf("delete mysql connection\n");
 }
 
 
@@ -63,6 +65,9 @@ bool MysqlConnection::Update(const std::string& sql) {
     if (mysql_query(&mysql_, sql.c_str())) {
         std::cout << mysql_error(&mysql_) << ", sql:" << sql << std::endl;
         return false;
+    } else {
+        std::cout << mysql_error(&mysql_) << ", sql:" << sql << std::endl;
+
     }
     return true;
 }

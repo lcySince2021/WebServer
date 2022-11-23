@@ -6,10 +6,8 @@
 
 class MysqlConnection {
 public:
-    static MysqlConnection& GetInstance() {
-        static MysqlConnection connection;
-        return connection;
-    }
+
+    MysqlConnection();
     ~MysqlConnection();
 public:
     std::string host_ = "";
@@ -18,7 +16,6 @@ public:
     std::string passwd_ = "";
     std::string database_ = "";
 public:
-    MysqlConnection();
     bool Init();
     bool Init(std::string host, int port, std::string user, std::string passwd, std::string database);
     bool ReConnect();
@@ -30,6 +27,7 @@ public:
     bool Query(const std::string& sql);
 
     bool IsValid() { return is_inited_; }
+    MYSQL* GetConn() { return &mysql_; }
 private:
     MYSQL mysql_;
     MYSQL_ROW row_;
