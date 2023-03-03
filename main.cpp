@@ -9,32 +9,30 @@
 #include "./thirdparty/rapidjson/document.h"
 #include "./thirdparty/rapidjson/writer.h"
 #include "./thirdparty/rapidjson/stringbuffer.h"
+#include "./thirdparty/workflow/include/WFHttpServer.h"
 
 using std::cout;
 using std::endl;
 using namespace hv;
 using namespace rapidjson;
 
+
 void JsonTest() {
     const char* json = "{\"project\":\"rapidjson\",\"stars\":10}";
     Document d;
     d.Parse(json);
  
-    // 2. 利用 DOM 作出修改。
     Value& s = d["stars"];
     s.SetInt(s.GetInt() + 1);
  
-    // 3. 把 DOM 转换（stringify）成 JSON。
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     d.Accept(writer);
  
-    // Output {"project":"rapidjson","stars":11}
     std::cout << buffer.GetString() << std::endl;
 }
 
 int main() {
-    JsonTest();
     /*auto db_pool = MysqlConnPool::GetInstance();
     db_pool->Init("127.0.0.1", 3306, "root", "123456", "lcy", 8);
     int count = db_pool->GetFree();
@@ -53,7 +51,7 @@ int main() {
         // result.get();
     }*/
 
-    // start server
+    //// start server
     // hv::HttpService router;
     // router.GET("/ping", [](HttpRequest* req, HttpResponse* resp) {
     //         return resp->String("pong");
@@ -63,6 +61,16 @@ int main() {
     // server.setPort(8080);
     // server.setThreadNum(4);
     // server.run();
-    return 0;
     
+    // workflow HttpServer
+    WFHttpServer server([](WFHttpTask *task) {
+            task->get_resp()->append_output_body("<html>Hello world!</html>");
+            });
+    if (server.start(8080) ==0) {
+        getchar();
+        server.stop();
+    }
+
+
+    return 0;
 }
