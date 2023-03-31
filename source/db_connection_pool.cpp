@@ -92,3 +92,27 @@ MysqlConnPool::~MysqlConnPool() {
     DestroyPool();
 }
 
+
+bool MyQuery(MYSQL* conn, const std::string& sql, char* data) {
+    int ret = mysql_query(conn, sql.c_str());
+    if (ret != 0) {
+        printf("mysql query error: %s\n", mysql_error(conn));
+        return false;
+    }
+    MYSQL_RES* result = mysql_store_result(conn);
+    if (result == NULL) {
+        printf("mysql query error: %s\n", mysql_error(conn));
+        return false;
+    } else {
+        // int row = mysql_num_rows(result);
+        // int col = mysql_num_fields(result);
+        MYSQL_ROW row;
+        while (row = mysql_fetch_row(result)) {
+            for (int i = 0; i < mysql_num_fields(result); ++i) {
+                std::cout << row[i] << std::endl;
+            }
+        }
+
+    }
+    return true;
+}

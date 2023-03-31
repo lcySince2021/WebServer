@@ -1,5 +1,6 @@
 #ifndef _DB_CONNECTION_POOL_H_
 #define _DB_CONNECTION_POOL_H_
+#include <iostream>
 #include <queue>
 #include <stdio.h>
 #include <thread>
@@ -34,6 +35,8 @@ private:
     Locker locker_;
     Sem sem_;
 };
+
+bool MyQuery(MYSQL* conn, const std::string& sql, char* data);
 
 
 #endif
