@@ -9,7 +9,7 @@ else
 endif
 
 server: main.cpp ./source/*.cpp
-	$(CXX) -o server $^ $() -L ./source/ -L ./thirdparty/libhv/lib/ -L ./thirdparty/workflow/lib/ -I ./thirdparty/ -lworkflow -lhv `mysql_config --cflags --libs` -g -std=c++11;
+	$(CXX) -o server $^ $() -L ./source/ -L ./thirdparty/libhv/lib/ -L ./thirdparty/workflow/lib/ -I ./thirdparty/ -lworkflow -lhv `mysql_config --cflags --libs` -g -std=c++14;
 
 clean:
 	rm -r server

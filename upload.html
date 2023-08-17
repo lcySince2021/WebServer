@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>图片上传</title>
+</head>
+
+<body>
+  <form enctype="multipart/form-data">
+    <input type="file" name="image" id="image">
+    <button type="button" onclick="upload()">上传</button>
+  </form>
+  <script>
+    function upload() {
+      var file = document.getElementById('image').files[0];
+      if (!file) {
+        alert('请选择要上传的文件！');
+        return;
+      }
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/upload');
+      xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          alert('上传成功！');
+        } else if (xhr.readyState === 4) {
+          alert(xhr.status);
+          alert('上传失败1：' + xhr.statusText);
+        }
+      };
+      xhr.send(file);
+    }
+  </script>
+</body>
+
+</html>

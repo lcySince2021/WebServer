@@ -4,17 +4,18 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ConnRAII	db_connection_pool.cpp	/^ConnRAII::ConnRAII(MYSQL** conn, MysqlConnPool* pool) {$/;"	f	class:ConnRAII	signature:(MYSQL** conn, MysqlConnPool* pool)
-ConnRAII	db_connection_pool.h	/^class ConnRAII {$/;"	c
-ConnRAII::ConnRAII	db_connection_pool.cpp	/^ConnRAII::ConnRAII(MYSQL** conn, MysqlConnPool* pool) {$/;"	f	class:ConnRAII	signature:(MYSQL** conn, MysqlConnPool* pool)
-ConnRAII::conn_	db_connection_pool.h	/^    MYSQL* conn_;$/;"	m	class:ConnRAII	access:private
-ConnRAII::conn_pool_	db_connection_pool.h	/^    MysqlConnPool* conn_pool_;$/;"	m	class:ConnRAII	access:private
-ConnRAII::~ConnRAII	db_connection_pool.cpp	/^ConnRAII::~ConnRAII() {$/;"	f	class:ConnRAII	signature:()
 DestroyPool	db_connection_pool.cpp	/^void MysqlConnPool::DestroyPool() {$/;"	f	class:MysqlConnPool	signature:()
 GetConn	db_connection_pool.cpp	/^MYSQL* MysqlConnPool::GetConn() {$/;"	f	class:MysqlConnPool	signature:()
-GetFree	db_connection_pool.cpp	/^int MysqlConnPool::GetFree() {$/;"	f	class:MysqlConnPool	signature:()
 GetInstance	db_connection_pool.cpp	/^MysqlConnPool* MysqlConnPool::GetInstance() {$/;"	f	class:MysqlConnPool	signature:()
 Init	db_connection_pool.cpp	/^void MysqlConnPool::Init(const std::string& host, int port, const std::string& user, const std::string& passwd, const std::string& database, int max_conn_count) {$/;"	f	class:MysqlConnPool	signature:(const std::string& host, int port, const std::string& user, const std::string& passwd, const std::string& database, int max_conn_count)
+Init	log.h	/^    static void Init(const std::string& path = "log.txt") {$/;"	f	class:Logger	access:public	signature:(const std::string& path = Ó)
+Insert	db_solution.h	/^bool Insert(MYSQL* mysql, const std::string& sql)$/;"	f	signature:(MYSQL* mysql, const std::string& sql)
+LOG_CRITICAL	log.h	20;"	d
+LOG_DEBUG	log.h	16;"	d
+LOG_ERROR	log.h	19;"	d
+LOG_INFO	log.h	17;"	d
+LOG_TRACE	log.h	15;"	d
+LOG_WARN	log.h	18;"	d
 Lock	locker.h	/^    bool Lock() {$/;"	f	class:Locker	access:public	signature:()
 Locker	locker.h	/^    Locker() {$/;"	f	class:Locker	access:public	signature:()
 Locker	locker.h	/^class Locker {$/;"	c
@@ -23,11 +24,16 @@ Locker::Locker	locker.h	/^    Locker() {$/;"	f	class:Locker	access:public	signat
 Locker::UnLock	locker.h	/^    bool UnLock() {$/;"	f	class:Locker	access:public	signature:()
 Locker::mtx_	locker.h	/^    pthread_mutex_t mtx_;$/;"	m	class:Locker	access:private
 Locker::~Locker	locker.h	/^    ~Locker() {$/;"	f	class:Locker	access:public	signature:()
+Logger	log.h	/^class Logger {$/;"	c
+Logger::Init	log.h	/^    static void Init(const std::string& path = "log.txt") {$/;"	f	class:Logger	access:public	signature:(const std::string& path = Ó)
+Logger::s_logger	log.h	/^    static std::shared_ptr<spdlog::logger> s_logger;$/;"	m	class:Logger	access:private
+Logger::s_logger	log.h	/^std::shared_ptr<spdlog::logger> Logger::s_logger = nullptr;$/;"	m	class:Logger
+MyQuery	db_connection_pool.cpp	/^bool MyQuery(MYSQL* conn, const std::string& sql, std::vector<std::vector<uint8_t>>& data) {$/;"	f	signature:(MYSQL* conn, const std::string& sql, std::vector<std::vector<uint8_t>>& data)
+MyUpdate	db_connection_pool.cpp	/^bool MyUpdate(MYSQL* conn, const std::string& sql) {$/;"	f	signature:(MYSQL* conn, const std::string& sql)
 MysqlConnPool	db_connection_pool.cpp	/^MysqlConnPool::MysqlConnPool() {$/;"	f	class:MysqlConnPool	signature:()
 MysqlConnPool	db_connection_pool.h	/^class MysqlConnPool {$/;"	c
 MysqlConnPool::DestroyPool	db_connection_pool.cpp	/^void MysqlConnPool::DestroyPool() {$/;"	f	class:MysqlConnPool	signature:()
 MysqlConnPool::GetConn	db_connection_pool.cpp	/^MYSQL* MysqlConnPool::GetConn() {$/;"	f	class:MysqlConnPool	signature:()
-MysqlConnPool::GetFree	db_connection_pool.cpp	/^int MysqlConnPool::GetFree() {$/;"	f	class:MysqlConnPool	signature:()
 MysqlConnPool::GetInstance	db_connection_pool.cpp	/^MysqlConnPool* MysqlConnPool::GetInstance() {$/;"	f	class:MysqlConnPool	signature:()
 MysqlConnPool::Init	db_connection_pool.cpp	/^void MysqlConnPool::Init(const std::string& host, int port, const std::string& user, const std::string& passwd, const std::string& database, int max_conn_count) {$/;"	f	class:MysqlConnPool	signature:(const std::string& host, int port, const std::string& user, const std::string& passwd, const std::string& database, int max_conn_count)
 MysqlConnPool::MysqlConnPool	db_connection_pool.cpp	/^MysqlConnPool::MysqlConnPool() {$/;"	f	class:MysqlConnPool	signature:()
@@ -36,6 +42,7 @@ MysqlConnPool::conn_list_	db_connection_pool.h	/^    std::list<MYSQL*> conn_list
 MysqlConnPool::cur_conn_count_	db_connection_pool.h	/^    int cur_conn_count_;$/;"	m	class:MysqlConnPool	access:private
 MysqlConnPool::database_	db_connection_pool.h	/^    std::string database_;$/;"	m	class:MysqlConnPool	access:public
 MysqlConnPool::free_conn_count_	db_connection_pool.h	/^    int free_conn_count_;$/;"	m	class:MysqlConnPool	access:private
+MysqlConnPool::get_free_count	db_connection_pool.cpp	/^int MysqlConnPool::get_free_count() {$/;"	f	class:MysqlConnPool	signature:()
 MysqlConnPool::host_	db_connection_pool.h	/^    std::string host_;$/;"	m	class:MysqlConnPool	access:public
 MysqlConnPool::locker_	db_connection_pool.h	/^    Locker locker_;$/;"	m	class:MysqlConnPool	access:private
 MysqlConnPool::max_conn_count_	db_connection_pool.h	/^    int max_conn_count_;$/;"	m	class:MysqlConnPool	access:private
@@ -66,19 +73,20 @@ ThreadPool::tasks	thread_pool.h	/^    std::queue< std::function<void()> > tasks;
 ThreadPool::workers	thread_pool.h	/^    std::vector< std::thread > workers;$/;"	m	class:ThreadPool	access:private
 ThreadPool::~ThreadPool	thread_pool.h	/^inline ThreadPool::~ThreadPool()$/;"	f	class:ThreadPool	signature:()
 UnLock	locker.h	/^    bool UnLock() {$/;"	f	class:Locker	access:public	signature:()
+Update	db_solution.h	/^bool Update(MYSQL* mysql, const std::string& sql)$/;"	f	signature:(MYSQL* mysql, const std::string& sql)
 Wait	locker.h	/^    bool Wait() {$/;"	f	class:Sem	access:public	signature:()
 _DB_CONNECTION_POOL_H_	db_connection_pool.h	2;"	d
 _HTTP_H_	http.h	2;"	d
 _LOCKER_H_	locker.h	2;"	d
+_LOG_H_	log.h	2;"	d
 _THREAD_POOL_H_	thread_pool.h	2;"	d
 condition	thread_pool.h	/^    std::condition_variable condition;$/;"	m	class:ThreadPool	access:private
-conn_	db_connection_pool.h	/^    MYSQL* conn_;$/;"	m	class:ConnRAII	access:private
 conn_list_	db_connection_pool.h	/^    std::list<MYSQL*> conn_list_;$/;"	m	class:MysqlConnPool	access:private
-conn_pool_	db_connection_pool.h	/^    MysqlConnPool* conn_pool_;$/;"	m	class:ConnRAII	access:private
 cur_conn_count_	db_connection_pool.h	/^    int cur_conn_count_;$/;"	m	class:MysqlConnPool	access:private
 database_	db_connection_pool.h	/^    std::string database_;$/;"	m	class:MysqlConnPool	access:public
 free_conn_count_	db_connection_pool.h	/^    int free_conn_count_;$/;"	m	class:MysqlConnPool	access:private
 future	thread_pool.h	/^        -> std::future<typename std::result_of<F(Args...)>::type>;$/;"	m	class:ThreadPool::std	access:public
+get_free_count	db_connection_pool.cpp	/^int MysqlConnPool::get_free_count() {$/;"	f	class:MysqlConnPool	signature:()
 host_	db_connection_pool.h	/^    std::string host_;$/;"	m	class:MysqlConnPool	access:public
 locker_	db_connection_pool.h	/^    Locker locker_;$/;"	m	class:MysqlConnPool	access:private
 max_conn_count_	db_connection_pool.h	/^    int max_conn_count_;$/;"	m	class:MysqlConnPool	access:private
@@ -86,13 +94,14 @@ mtx_	locker.h	/^    pthread_mutex_t mtx_;$/;"	m	class:Locker	access:private
 passwd_	db_connection_pool.h	/^    std::string passwd_;$/;"	m	class:MysqlConnPool	access:public
 port_	db_connection_pool.h	/^    int port_;$/;"	m	class:MysqlConnPool	access:public
 queue_mutex	thread_pool.h	/^    std::mutex queue_mutex;$/;"	m	class:ThreadPool	access:private
+s_logger	log.h	/^    static std::shared_ptr<spdlog::logger> s_logger;$/;"	m	class:Logger	access:private
+s_logger	log.h	/^std::shared_ptr<spdlog::logger> Logger::s_logger = nullptr;$/;"	m	class:Logger
 sem_	db_connection_pool.h	/^    Sem sem_;$/;"	m	class:MysqlConnPool	access:private
 sem_	locker.h	/^    sem_t sem_;$/;"	m	class:Sem	access:private
 stop	thread_pool.h	/^    bool stop;$/;"	m	class:ThreadPool	access:private
 tasks	thread_pool.h	/^    std::queue< std::function<void()> > tasks;$/;"	m	class:ThreadPool	access:private
 user_	db_connection_pool.h	/^    std::string user_;$/;"	m	class:MysqlConnPool	access:public
 workers	thread_pool.h	/^    std::vector< std::thread > workers;$/;"	m	class:ThreadPool	access:private
-~ConnRAII	db_connection_pool.cpp	/^ConnRAII::~ConnRAII() {$/;"	f	class:ConnRAII	signature:()
 ~Locker	locker.h	/^    ~Locker() {$/;"	f	class:Locker	access:public	signature:()
 ~MysqlConnPool	db_connection_pool.cpp	/^MysqlConnPool::~MysqlConnPool() {$/;"	f	class:MysqlConnPool	signature:()
 ~Sem	locker.h	/^    ~Sem() {$/;"	f	class:Sem	access:public	signature:()

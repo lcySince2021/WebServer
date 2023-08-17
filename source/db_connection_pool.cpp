@@ -78,7 +78,7 @@ void MysqlConnPool::DestroyPool() {
     locker_.UnLock();
 } 
 
-int MysqlConnPool::GetFree() {
+int MysqlConnPool::get_free_count() {
     return free_conn_count_;
 }
 
@@ -93,7 +93,7 @@ MysqlConnPool::~MysqlConnPool() {
 }
 
 
-bool MyQuery(MYSQL* conn, const std::string& sql, char* data) {
+bool MyQuery(MYSQL* conn, const std::string& sql, std::vector<std::vector<uint8_t>>& data) {
     int ret = mysql_query(conn, sql.c_str());
     if (ret != 0) {
         printf("mysql query error: %s\n", mysql_error(conn));
@@ -104,15 +104,24 @@ bool MyQuery(MYSQL* conn, const std::string& sql, char* data) {
         printf("mysql query error: %s\n", mysql_error(conn));
         return false;
     } else {
-        // int row = mysql_num_rows(result);
-        // int col = mysql_num_fields(result);
         MYSQL_ROW row;
-        while (row = mysql_fetch_row(result)) {
-            for (int i = 0; i < mysql_num_fields(result); ++i) {
-                std::cout << row[i] << std::endl;
-            }
-        }
+        int num_fields = mysql_num_fields(result);
 
+        while (row = mysql_fetch_row(result)) {
+            std::vector<uint8_t> row_data;
+            for (int i = 0; i < num_fields; i++) {
+                if (row[i] != nullptr) {
+                    row_data.insert(row_data.end(), row[i], row[i] + mysql_fetch_lengths(result)[i]);
+                }
+            }
+            data.push_back(row_data);
+        }
     }
+    mysql_free_result(result);
     return true;
 }
+
+bool MyUpdate(MYSQL* conn, const std::string& sql) {
+    return true;
+}
+

@@ -8,6 +8,7 @@
 #include <mysql/mysql.h>
 #include "locker.h"
 #include <list>
+#include <string.h>
 class MysqlConnPool {
 public:
     static MysqlConnPool* GetInstance();
@@ -15,7 +16,7 @@ public:
     MYSQL* GetConn();
     bool ReleaseConn(MYSQL* conn);
     void DestroyPool();
-    int GetFree();
+    int get_free_count();
 
 private:
     MysqlConnPool();
@@ -36,7 +37,8 @@ private:
     Sem sem_;
 };
 
-bool MyQuery(MYSQL* conn, const std::string& sql, char* data);
+bool MyQuery(MYSQL* conn, const std::string& sql, std::vector<std::vector<uint8_t>>& data);
+bool MyUpdate(MYSQL* conn, const std::string& sql);
 
 
 #endif
