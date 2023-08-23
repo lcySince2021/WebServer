@@ -126,6 +126,13 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
     return true;
 }
 
-#define LOG_INFO(...) MyLog::GetInstance().GetConsoleObject()->info(__VA_ARGS__);
+#define LOG_INFO(fmt, ...)  do {    \
+                                {   \
+                                    char buffer[256];   \
+                                    sprintf(buffer, fmt, __VA_ARGS__);  \
+                                    std::string message(buffer);    \
+                                    MyLog::GetInstance().GetConsoleObject()->info(message); \
+                                }   \
+                            } while(0)
 
 #endif // _LOG_H_

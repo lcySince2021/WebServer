@@ -23,9 +23,10 @@ using namespace rapidjson;
 
 int main() {
     MyLog::GetInstance().InitLog();
-    MyLog::GetInstance().GetConsoleObject()->info("hello {}", "world");
-    MyLog::GetInstance().GetFileObject()->info("hello {}", "world");
+    // MyLog::GetInstance().GetConsoleObject()->info("hello {}", "world");
+    // MyLog::GetInstance().GetFileObject()->info("hello {}", "world");
 
-    LOG_INFO("1111111111111111");
+    LOG_INFO("1111111111111111 %d", 333);
+    LOG_INFO("a is %s", "aaa");
     return 0;
 }
