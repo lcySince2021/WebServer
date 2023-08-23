@@ -20,14 +20,12 @@ using namespace hv;
 using namespace rapidjson;
 
 
-struct User {
-    uint32_t id;
-    char user_id[512];
-    char password[512];
-};
 
 int main() {
-    
+    MyLog::GetInstance().InitLog();
+    MyLog::GetInstance().GetConsoleObject()->info("hello {}", "world");
+    MyLog::GetInstance().GetFileObject()->info("hello {}", "world");
 
+    LOG_INFO("1111111111111111");
     return 0;
 }
