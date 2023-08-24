@@ -134,5 +134,21 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
                                     MyLog::GetInstance().GetConsoleObject()->info(message); \
                                 }   \
                             } while(0)
+#define LOG_DEBUG(fmt, ...)  do {    \
+                                {   \
+                                    char buffer[256];   \
+                                    sprintf(buffer, fmt, __VA_ARGS__);  \
+                                    std::string message(buffer);    \
+                                    MyLog::GetInstance().GetConsoleObject()->debug(message); \
+                                }   \
+                            } while(0)
+#define LOG_ERROR(fmt, ...)  do {    \
+                                {   \
+                                    char buffer[256];   \
+                                    sprintf(buffer, fmt, __VA_ARGS__);  \
+                                    std::string message(buffer);    \
+                                    MyLog::GetInstance().GetConsoleObject()->error(message); \
+                                }   \
+                            } while(0)
 
 #endif // _LOG_H_

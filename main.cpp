@@ -28,5 +28,7 @@ int main() {
 
     LOG_INFO("1111111111111111 %d", 333);
     LOG_INFO("a is %s", "aaa");
+    LOG_DEBUG("1111 %d", 2);
+    LOG_ERROR("111 is not %s", "abc");
     return 0;
 }
