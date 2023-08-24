@@ -131,7 +131,7 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
                                     char buffer[256];   \
                                     sprintf(buffer, fmt, __VA_ARGS__);  \
                                     std::string message(buffer);    \
-                                    MyLog::GetInstance().GetConsoleObject()->info(message); \
+                                    MyLog::GetInstance().GetFileObject()->info(message); \
                                 }   \
                             } while(0)
 #define LOG_DEBUG(fmt, ...)  do {    \
@@ -139,7 +139,7 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
                                     char buffer[256];   \
                                     sprintf(buffer, fmt, __VA_ARGS__);  \
                                     std::string message(buffer);    \
-                                    MyLog::GetInstance().GetConsoleObject()->debug(message); \
+                                    MyLog::GetInstance().GetFileObject()->debug(message); \
                                 }   \
                             } while(0)
 #define LOG_ERROR(fmt, ...)  do {    \
@@ -147,7 +147,7 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
                                     char buffer[256];   \
                                     sprintf(buffer, fmt, __VA_ARGS__);  \
                                     std::string message(buffer);    \
-                                    MyLog::GetInstance().GetConsoleObject()->error(message); \
+                                    MyLog::GetInstance().GetFileObject()->error(message); \
                                 }   \
                             } while(0)
 

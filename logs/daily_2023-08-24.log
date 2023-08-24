@@ -1,0 +1,4 @@
+[2023-08-24 11:29:26.906] [daily_logger] [info] 1111111111111111 333
+[2023-08-24 11:29:26.906] [daily_logger] [info] a is aaa
+[2023-08-24 11:29:26.906] [daily_logger] [debug] 1111 2
+[2023-08-24 11:29:26.906] [daily_logger] [error] 111 is not abc
