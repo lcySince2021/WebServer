@@ -25,10 +25,11 @@ int main() {
     MyLog::GetInstance().InitLog();
     // MyLog::GetInstance().GetConsoleObject()->info("hello {}", "world");
     // MyLog::GetInstance().GetFileObject()->info("hello {}", "world");
+    // bool ret = Init();
+    // if (!ret) {
+    //     LOG_ERROR("Init Error!");
+    // }
 
-    LOG_INFO("1111111111111111 %d", 333);
-    LOG_INFO("a is %s", "aaa");
-    LOG_DEBUG("1111 %d", 2);
     LOG_ERROR("111 is not %s", "abc");
     return 0;
 }

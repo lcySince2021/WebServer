@@ -1,6 +1,7 @@
 #ifndef _LOG_H_
 #define _LOG_G_
-
+#include <iostream>
+#include <string>
 #include "../thirdparty/spdlog/include/spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h" // support for basic file logging
 #include "spdlog/sinks/rotating_file_sink.h" // support for rotating file logging
@@ -18,7 +19,7 @@ protected:
     ~MyLog();
 private:
     MyLog(const MyLog& log) {}
-    MyLog& operator = (const MyLog& log) {}
+    MyLog& operator = (const MyLog& log) { return *this; }
 public:
     bool InitLog(int consoleLevel = 0, const int fileLevel = 0, int maxSize = 1000, int backIndex = 10, int isDay = 1);
     auto GetConsoleObject();
@@ -120,8 +121,8 @@ bool MyLog::InitLog(int consoleLevel, int fileLevel, int maxSize, int backIndex,
         }
     }
     catch (const spdlog::spdlog_ex& ex) {
-        return false;
         std::cout << "Log Init failed:" << ex.what() << std::endl;
+        return false;
     }
     return true;
 }
